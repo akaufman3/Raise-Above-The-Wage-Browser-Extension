@@ -1,4 +1,5 @@
 var costAdjustments = {
+	whiteMale: 0,
 	whiteWoman: 0.21,
 	africanAmericanWoman: 0.45
 };
@@ -8,7 +9,22 @@ var costs = [];
 var i;
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
-	if(request.action == "whiteWoman") {
+	if(request.action == "whiteMale") {
+		var i = 0;
+		document.body.innerHTML = document.body.innerHTML.replace(/\$\d+[0-9\.,]+?(?=\D\D)\b(?! )/g, function(match){
+			var currentCost = match.replace(/\$/g, "");
+			if (currentCostAdjustments !== 0) {
+				var baseCost = currentCost - (currentCostAdjustments * costs[i]);
+				var maleCost = '$' + Math.abs(parseFloat(baseCost)).toFixed(2);
+			} else {
+				costs.push(currentCost);
+				var maleCost = '$' + Math.abs(parseFloat(currentCost)).toFixed(2);
+			}
+			// return '<span class="red">' + womenCost + '</span>';
+			i++;
+			return maleCost;
+		});
+	} else if(request.action == "whiteWoman") {
 			var i = 0;
 			document.body.innerHTML = document.body.innerHTML.replace(/\$\d+[0-9\.,]+?(?=\D\D)\b(?! )/g, function(match){
 				var currentCost = match.replace(/\$/g, "");
@@ -25,7 +41,6 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
 				i++;
 				return womenCost;
 			});
-
 	} else if(request.action == "africanAmericanWoman") {
 		var i = 0;
 		document.body.innerHTML = document.body.innerHTML.replace(/\$\d+[0-9\.,]+?(?=\D\D)\b(?! )/g, function(match){
