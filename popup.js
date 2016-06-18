@@ -1,4 +1,9 @@
 $(function() {  
+	$('#whiteMale').click(function() {
+		chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+			chrome.tabs.sendMessage(tabs[0].id, {action: "whiteMale"});
+		});
+	});
 	$('#whiteWoman').click(function() {
 		chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
 			chrome.tabs.sendMessage(tabs[0].id, {action: "whiteWoman"});
@@ -9,9 +14,14 @@ $(function() {
 			chrome.tabs.sendMessage(tabs[0].id, {action: "africanAmericanWoman"});
 		});
 	});
-	$('#whiteMale').click(function() {
+	$('#latinoWoman').click(function() {
 		chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
-			chrome.tabs.sendMessage(tabs[0].id, {action: "whiteMale"});
+			chrome.tabs.sendMessage(tabs[0].id, {action: "latinoWoman"});
+		});
+	});
+	$('#asianAmericanWoman').click(function() {
+		chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+			chrome.tabs.sendMessage(tabs[0].id, {action: "asianAmericanWoman"});
 		});
 	});
 });
