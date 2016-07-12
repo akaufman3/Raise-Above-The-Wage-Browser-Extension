@@ -83,7 +83,7 @@ body{
     margin-bottom: 1em;
 }
 
-img.img-active-profile-circle{
+img#imgActiveProfileCircle.img-active-profile-circle{
     height: 75%;
     display: block;
     position: absolute;
@@ -99,7 +99,7 @@ img.img-active-profile-circle{
 .active-profile-info p{
 	text-align: center;
 }
-p.profile-name{
+p.profileName{
 	font-family: 'Roboto', sans-serif;
 	font-weight: 500;
 	font-size: 14px;
@@ -107,7 +107,7 @@ p.profile-name{
     color: #4d4d4d;				
 
 }
-p.profile-wage{
+p.profileWage{
 	font-family: 'Roboto', sans-serif;
 	font-weight: 400;
     font-size: 12px;
@@ -148,6 +148,10 @@ p.profile-wage{
     border-bottom: none;
 }
 
+.button:hover{
+    background-color: #f1e0fd;
+}
+
 #whiteWoman{
     float:left;
     border-right: none;
@@ -182,6 +186,10 @@ p.profile-wage{
     text-align: center;
     margin: 0 auto;
     display: block;
+}
+
+a:hover{
+    color: #f1e0fd;
 }
 
 .title-link{
