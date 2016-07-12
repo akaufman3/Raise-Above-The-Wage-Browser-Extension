@@ -28,7 +28,7 @@ $(function() {
 	});
 	$('#hispanicWoman').click(function() {
 		$('#imgActiveProfileCircle').attr('src', 'public/latinwoman.png');
-		$('#activeProfileInfo p.profileName').text('Latina Woman');
+		$('#activeProfileInfo p.profileName').text('Latina or Hispanic Woman');
 		$('#activeProfileInfo p.profileWage').text('$0.54 \/ per dollar');
 
 		chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
@@ -37,7 +37,7 @@ $(function() {
 	});
 	$('#asianAmericanWoman').click(function() {
 		$('#imgActiveProfileCircle').attr('src', 'public/asianwoman.png');
-		$('#activeProfileInfo p.profileName').text('Asian Woman');
+		$('#activeProfileInfo p.profileName').text('Asian American Woman');
 		$('#activeProfileInfo p.profileWage').text('$0.90 \/ per dollar');
 
 		chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
