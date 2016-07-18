@@ -23,9 +23,10 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
 			} else {
 				costs.push(currentCost);
 				var maleCost = '$' + Math.abs(parseFloat(currentCost)).toFixed(2);
+				console.log(maleCost)
 			}
 			i++;
-			return maleCost.toString().replace(/\B(?=(?:\d{3})+(?!\d))/g, ",").split(".")[0];
+			return maleCost.toString().replace(/\B(?=(?:\d{3})+(?!\d))/g, ",").replace(/\.[0]{2}/g, "");
 		});
 	} else if(request.action == "whiteWoman") {
 			var i = 0;
@@ -40,7 +41,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
 					var womenCost = '$' +  Math.abs(parseFloat(womenCostDiff)).toFixed(2);
 				}
 				i++;
-				return womenCost.toString().replace(/\B(?=(?:\d{3})+(?!\d))/g, ",").split(".")[0];;
+				return finalCost = womenCost.toString().replace(/\B(?=(?:\d{3})+(?!\d))/g, ",").replace(/\.[0]{2}/g, "");
 			});
 	} else if(request.action == "africanAmericanWoman") {
 		var i = 0;
@@ -55,7 +56,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
 				var womenCost = '$' + Math.abs(parseFloat(womenCostDiff)).toFixed(2);
 			}
 			i++;
-			return womenCost.toString().replace(/\B(?=(?:\d{3})+(?!\d))/g, ",").split(".")[0];;
+			return womenCost.toString().replace(/\B(?=(?:\d{3})+(?!\d))/g, ",").replace(/\.[0]{2}/g, "");
 		});
 	} else if(request.action == "hispanicWoman") {
 		var i = 0;
@@ -70,7 +71,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
 				var womenCost = '$' + Math.abs(parseFloat(womenCostDiff)).toFixed(2);
 			}
 			i++;
-			return womenCost.toString().replace(/\B(?=(?:\d{3})+(?!\d))/g, ",").split(".")[0];;
+			return womenCost.toString().replace(/\B(?=(?:\d{3})+(?!\d))/g, ",").replace(/\.[0]{2}/g, "");
 		});
 	} else if(request.action == "asianAmericanWoman") {
 		var i = 0;
@@ -85,7 +86,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
 				var womenCost = '$' + Math.abs(parseFloat(womenCostDiff)).toFixed(2);
 			}
 			i++;
-			return womenCost.toString().replace(/\B(?=(?:\d{3})+(?!\d))/g, ",").split(".")[0];;
+			return womenCost.toString().replace(/\B(?=(?:\d{3})+(?!\d))/g, ",").replace(/\.[0]{2}/g, "");
 		});
 	}
 
