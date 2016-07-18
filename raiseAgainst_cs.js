@@ -19,12 +19,30 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
 	if(request.action == "whiteMale") {
 		var i = 0;
 		document.body.innerHTML = document.body.innerHTML.replace(/\$\d+[0-9\.,]+?(?=\D\D)\b(?! )/g, function(match){
+			var comma;
+			if (commaCheck.test(costs[i]) == true) {
+				currentCost = costs[i].replace(/\,/g, "");
+				comma = true;
+			} else {
+				comma = false;
+			}
 			if (currentCostAdjustments !== 0) {
-				var maleCost = '$' + Math.abs(parseFloat(costs[i])).toFixed(2);
+				if (comma == true) {
+					var finalCost = '$' + Math.abs(parseFloat(costs[i])).toFixed(2);
+					var maleCost = '$' + Number(finalCost).toLocaleString('en');
+				}
+				else {
+					var maleCost = '$' + Math.abs(parseFloat(costs[i])).toFixed(2);
+				}
 			} else {
 				var currentCost = match.replace(/\$/g, "");
 				costs.push(currentCost);
-				var maleCost = '$' + Math.abs(parseFloat(currentCost)).toFixed(2);
+				if (comma == true) {
+					var finalCost = '$' + Math.abs(parseFloat(currentCost)).toFixed(2);
+					var maleCost = '$' + Number(finalCost).toLocaleString('en');
+				} else {
+					var maleCost = '$' + Math.abs(parseFloat(currentCost)).toFixed(2);
+				}
 			}
 			i++;
 			return maleCost;
